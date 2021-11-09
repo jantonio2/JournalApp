@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { AuthRouter } from './AuthRouter';
-import { JournalScreen } from './../journal/JournalScreen';
+import { JournalScreen } from './../components/journal/JournalScreen';
 import {
   BrowserRouter as Router,
   Switch,
