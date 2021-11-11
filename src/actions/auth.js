@@ -1,4 +1,6 @@
 
+import { getAuth, signInWithPopup } from 'firebase/auth';
+import { googleAuthProvider } from '../firebase/firebase-config';
 import { types } from './../types/types';
 
 export const startLoginWithEmailPassword = (email, password) => {
@@ -6,6 +8,16 @@ export const startLoginWithEmailPassword = (email, password) => {
     setTimeout(() => {
       dispatch(login(123, 'Jesus'));
     }, 3500);
+  };
+};
+
+export const startGoogleLogin = () => {
+  return (dispatch) => {
+    const auth = getAuth();
+    signInWithPopup(auth, googleAuthProvider)
+      .then(({user}) => {
+        dispatch(login(user.uid, user.displayName))
+      });
   };
 };
 

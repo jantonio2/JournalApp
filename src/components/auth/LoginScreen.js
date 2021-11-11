@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startLoginWithEmailPassword } from '../../actions/auth';
+import { startGoogleLogin, startLoginWithEmailPassword } from '../../actions/auth';
 import { useForm } from './../../hooks/useForm';
 
 export const LoginScreen = () => {
@@ -20,6 +20,10 @@ export const LoginScreen = () => {
     console.log(email, password);
 
     dispatch(startLoginWithEmailPassword(email, password));
+  };
+
+  const handleGoogleLogin = () => {
+    dispatch(startGoogleLogin());
   };
 
   return (
@@ -58,6 +62,7 @@ export const LoginScreen = () => {
 
           <div 
             className="google-btn"
+            onClick={handleGoogleLogin}
           >
             <div className="google-icon-wrapper">
               <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
