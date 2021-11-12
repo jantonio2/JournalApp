@@ -1,4 +1,3 @@
-
 import { getAuth, signInWithPopup } from 'firebase/auth';
 import { googleAuthProvider } from '../firebase/firebase-config';
 import { types } from './../types/types';
