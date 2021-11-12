@@ -1,12 +1,17 @@
-import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from 'firebase/auth';
 import { googleAuthProvider } from '../firebase/firebase-config';
 import { types } from './../types/types';
 
 export const startLoginWithEmailPassword = (email, password) => {
   return (dispatch) => {
-    setTimeout(() => {
-      dispatch(login(123, 'Jesus'));
-    }, 3500);
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({user}) => {
+        dispatch(login(user.uid, user.displayName));
+      })
+      .catch(err => {
+        console.log("Usuario no encontrado");
+      });
   };
 };
 

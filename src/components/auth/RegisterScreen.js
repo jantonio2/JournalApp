@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeError, setError } from '../../actions/ui';
 import { useForm } from './../../hooks/useForm';
-import validator from 'validator';
 import { startRegisterWithEmailPasswordName } from '../../actions/auth';
+import validator from 'validator';
 
 export const RegisterScreen = () => {
   
