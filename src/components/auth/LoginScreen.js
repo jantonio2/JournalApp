@@ -9,7 +9,7 @@ import validator from 'validator';
 export const LoginScreen = () => {
 
   const dispatch = useDispatch();
-  const {msgError} = useSelector(state => state.ui);
+  const {msgError, loading} = useSelector(state => state.ui);
   const initialState = {
     email: 'antonio@gmail.com',
     password: 123456
@@ -76,6 +76,7 @@ export const LoginScreen = () => {
         <button
           type="submit"
           className="btn btn-primary btn-block"
+          disabled={loading}
         >
           Login
         </button>

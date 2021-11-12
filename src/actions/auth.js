@@ -1,9 +1,11 @@
 import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from 'firebase/auth';
 import { googleAuthProvider } from '../firebase/firebase-config';
 import { types } from './../types/types';
+import { finishLoading, startLoading } from './ui';
 
 export const startLoginWithEmailPassword = (email, password) => {
   return (dispatch) => {
+    dispatch(startLoading());
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(({user}) => {
@@ -11,6 +13,9 @@ export const startLoginWithEmailPassword = (email, password) => {
       })
       .catch(err => {
         console.log("Usuario no encontrado");
+      })
+      .finally(() => {
+        dispatch(finishLoading());
       });
   };
 };
