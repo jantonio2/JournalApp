@@ -43,7 +43,6 @@ export const startGoogleLogin = () => {
     const auth = getAuth();
     signInWithPopup(auth, googleAuthProvider)
       .then(({user}) => {
-        console.log('Hola');
         dispatch(login(user.uid, user.displayName));
       });
   };
