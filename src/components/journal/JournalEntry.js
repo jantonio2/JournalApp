@@ -1,29 +1,36 @@
 import React from 'react';
+import moment from 'moment';
 
-export const JournalEntry = () => {
+export const JournalEntry = ({id, date, title, body, url}) => {
+
+  const noteDate = moment(date);
+
   return (
     <div className="journal__entry">
-      <div 
-        className="journal__entry-picture"
-        style={{
-          backgroundSize: 'cover',
-          backgroundImage: 'url(https://www.ngenespanol.com/wp-content/uploads/2018/08/La-primera-imagen-de-la-historia.jpg)'
-          // backgroundImage: 'url(https://picsum.photos/200/300?random=1)'
-        }}
-      ></div>
+      {
+        url &&
+        <div 
+          className="journal__entry-picture"
+          style={{
+            backgroundSize: 'cover',
+            backgroundImage: `url(${url})`
+            // backgroundImage: 'url(https://picsum.photos/200/300?random=1)'
+          }}
+        ></div>
+      }
 
       <div className="journal__entry-body">
         <p className="journal__entry-title">
-          Un nuevo día
+          {title}
         </p>
         <p className="journal__entry-content">
-          Cillum eu consectetur dolore laboris aliquip et ea veniam ea sunt eu mollit sit.
+          {body}
         </p>
       </div>
 
       <div className="journal__entry-date-box">
-        <span>Monday</span>
-        <h4>28</h4>
+        <span>{noteDate.format('dddd')}</span>
+        <h4>{noteDate.format('Do')}</h4>
       </div>
     </div>
   );
