@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2'
 import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { googleAuthProvider } from '../firebase/firebase-config';
 import { types } from './../types/types';
@@ -12,7 +13,8 @@ export const startLoginWithEmailPassword = (email, password) => {
         dispatch(login(user.uid, user.displayName));
       })
       .catch(err => {
-        console.log("Usuario no encontrado");
+        console.log(err);
+        Swal.fire('Error', `User not found`, 'error');
       })
       .finally(() => {
         dispatch(finishLoading());
@@ -31,6 +33,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
       })
       .catch(e => {
         console.log(e);
+        Swal.fire('Error', `User already registered`, 'error');
       });
   };
 };
