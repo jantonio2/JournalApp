@@ -3,6 +3,7 @@ import { getAuth, signInWithPopup, createUserWithEmailAndPassword, updateProfile
 import { googleAuthProvider } from '../firebase/firebase-config';
 import { types } from './../types/types';
 import { finishLoading, startLoading } from './ui';
+import { noteLogout } from './notes';
 
 export const startLoginWithEmailPassword = (email, password) => {
   return (dispatch) => {
@@ -61,6 +62,7 @@ export const startLogout = () => {
     const auth = getAuth();
     await signOut(auth);
     dispatch(logout());
+    dispatch(noteLogout());
   };
 };
 
