@@ -21,6 +21,7 @@ export const NotesAppBar = () => {
     const file = e.target.files[0];
     if(file) {
       dispatch(startUploading(file));
+      inputArchivo.current.value = '';
     }
   };
 

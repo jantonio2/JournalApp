@@ -52,7 +52,7 @@ export const NoteScreen = () => {
           note.url &&
           <div className="notes__image">
             <img 
-              src="https://neliosoftware.com/es/wp-content/uploads/sites/3/2018/07/aziz-acharki-549137-unsplash-1200x775.jpg"
+              src={note.url}
               alt="imagen"
             />
           </div>
