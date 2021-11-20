@@ -3,12 +3,12 @@ import thunk from 'redux-thunk';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
-import { login } from '../../../actions/auth';
-import { AppRouter } from './../../../routers/AppRouter';
+import { AppRouter } from '../../routers/AppRouter';
 import { act } from 'react-dom/test-utils';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { login } from '../../actions/auth';
 
-jest.mock('../../../actions/auth', () => ({
+jest.mock('../../actions/auth', () => ({
   login: jest.fn()
 }));
 
@@ -37,15 +37,15 @@ describe('Pruebas en <AppRouter />', () => {
 
   test('debe de llamar el login si estoy autenticado', async() => {
     
-    let user;
+    // let user;
 
     await act(async() => {
 
       const auth = getAuth();
-      const userCred = await signInWithEmailAndPassword(auth, 'test@testing.com', '123456');
-      user = userCred.user;
+      await signInWithEmailAndPassword(auth, 'test@testing.com', '123456');
+      // user = userCred.user;
 
-      const wrapper = mount(
+      mount(
         <Provider store={store}>
           <MemoryRouter>
             <AppRouter />
