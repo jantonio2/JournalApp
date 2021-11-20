@@ -40,7 +40,7 @@ export const addNewNote = (id, note) => ({
   }
 });
 
-export const startLoadinNotes = (uid) => {
+export const startLoadingNotes = (uid) => {
   return async(dispatch) => {
     const notes = await loadNotes(uid);
     dispatch(setNotes(notes));
